@@ -1,5 +1,5 @@
 //index.js
-import { displayCard } from "./dom";
+import { displayCard, updateTemperatureDisplay, convertToCelsius} from "./dom";
 import './styles.css';
 const apiKey = process.env.API_KEY;
 console.log(apiKey);
@@ -19,9 +19,11 @@ myForm.addEventListener('submit', async (event) => {
             displayCard(data.resolvedAddress, data.currentConditions.datetime, data.currentConditions.icon, data.currentConditions.temp);
         } catch (error) {
             console.error('Error:', error); // Log any errors
+            displayCard("An error occured");
         }
     } else {
         console.log('No city entered');
+        displayCard('No city entered');
     }
 });
 
