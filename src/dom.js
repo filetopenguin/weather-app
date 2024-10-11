@@ -1,5 +1,8 @@
 //dom.js
-
+import clear_day from './assets/clear-day.png';
+import partly_cloudy_day from './assets/partly-cloudy-day.png';
+import partly_cloudy_night from './assets/partly-cloudy-night.png';
+import cloudy from './assets/cloudy.png';
 
 function displayCard(address,date,icon,temp){
     const cardDiv = document.getElementById('card');
@@ -13,7 +16,8 @@ function displayCard(address,date,icon,temp){
 
     addressTitle.innerText = address;
     tempTitle.innerText = temp + " Farenheit"  ;
-    iconTitle.src = `src/assets/${icon}.png`;
+    icon.replace(/-/g, "_");
+    iconTitle.src = `assets/${icon}.png`;
     dateTitle.textContent = date;
 
     cardDiv.appendChild(addressTitle);
