@@ -116,7 +116,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   displayCard: () => (/* binding */ displayCard)\n/* harmony export */ });\n//dom.js\n\n\nfunction displayCard(address,date,icon,temp){\n    const cardDiv = document.getElementById('card');\n\n    cardDiv.innerHTML='';\n\n    const addressTitle = document.createElement(\"h1\");\n    const tempTitle = document.createElement(\"h2\");\n    const iconTitle = document.createElement(\"img\");\n    const dateTitle = document.createElement(\"p\");\n\n    addressTitle.innerText = address;\n    tempTitle.innerText = temp + \" Farenheit\"  ;\n    iconTitle.src = `assets/${icon}.png`;\n    dateTitle.textContent = date;\n\n    cardDiv.appendChild(addressTitle);\n    cardDiv.appendChild(tempTitle);\n    cardDiv.appendChild(iconTitle);\n    cardDiv.appendChild(dateTitle);\n\n\n}\n\n\n\n\n\n//# sourceURL=webpack://my-app/./src/dom.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   displayCard: () => (/* binding */ displayCard)\n/* harmony export */ });\n/* harmony import */ var _assets_clear_day_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/clear-day.png */ \"./src/assets/clear-day.png\");\n/* harmony import */ var _assets_partly_cloudy_day_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/partly-cloudy-day.png */ \"./src/assets/partly-cloudy-day.png\");\n/* harmony import */ var _assets_partly_cloudy_night_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/partly-cloudy-night.png */ \"./src/assets/partly-cloudy-night.png\");\n/* harmony import */ var _assets_cloudy_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/cloudy.png */ \"./src/assets/cloudy.png\");\n//dom.js\n\n\n\n\n\nfunction displayCard(address,date,icon,temp){\n    const cardDiv = document.getElementById('card');\n\n    cardDiv.innerHTML='';\n\n    const addressTitle = document.createElement(\"h1\");\n    const tempTitle = document.createElement(\"h2\");\n    const iconTitle = document.createElement(\"img\");\n    const dateTitle = document.createElement(\"p\");\n\n    addressTitle.innerText = address;\n    tempTitle.innerText = temp + \" Farenheit\"  ;\n    icon.replace(/-/g, \"_\");\n    iconTitle.src = `assets/${icon}.png`;\n    dateTitle.textContent = date;\n\n    cardDiv.appendChild(addressTitle);\n    cardDiv.appendChild(tempTitle);\n    cardDiv.appendChild(iconTitle);\n    cardDiv.appendChild(dateTitle);\n\n\n}\n\n\n\n\n\n//# sourceURL=webpack://my-app/./src/dom.js?");
 
 /***/ }),
 
@@ -127,6 +127,46 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ \"./src/dom.js\");\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n//index.js\n\n\nconst apiKey = \"Z2CEGX3XPMYJF5VVK6ZWA26H7\";\nconsole.log(apiKey);\n\n\nconst searchInput = document.querySelector(\"input[type=text]\")\nconst myForm = document.getElementById('my-form');\n\nmyForm.addEventListener('submit', async (event) => {\n    event.preventDefault();\n\n    const city = searchInput.value;\n    if (city) {\n        try {\n            const data = await fetchWeatherData(city); // Fetch weather data once\n            console.log(data); // Log the data received\n            (0,_dom__WEBPACK_IMPORTED_MODULE_0__.displayCard)(data.resolvedAddress, data.currentConditions.datetime, data.currentConditions.icon, data.currentConditions.temp);\n        } catch (error) {\n            console.error('Error:', error); // Log any errors\n        }\n    } else {\n        console.log('No city entered');\n    }\n});\n\n// Fetch weather data\nasync function fetchWeatherData(city) {\n    const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=${apiKey}`);\n    if (!response.ok) {\n        throw new Error('Network response was not ok');\n    }\n    return response.json(); // Return the parsed JSON response\n}\n\n\n//# sourceURL=webpack://my-app/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/assets/clear-day.png":
+/*!**********************************!*\
+  !*** ./src/assets/clear-day.png ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"d884c04b15426376f660.png\";\n\n//# sourceURL=webpack://my-app/./src/assets/clear-day.png?");
+
+/***/ }),
+
+/***/ "./src/assets/cloudy.png":
+/*!*******************************!*\
+  !*** ./src/assets/cloudy.png ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"c73e97779770682f8f3c.png\";\n\n//# sourceURL=webpack://my-app/./src/assets/cloudy.png?");
+
+/***/ }),
+
+/***/ "./src/assets/partly-cloudy-day.png":
+/*!******************************************!*\
+  !*** ./src/assets/partly-cloudy-day.png ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"f4d6d26873b7b3d9ff91.png\";\n\n//# sourceURL=webpack://my-app/./src/assets/partly-cloudy-day.png?");
+
+/***/ }),
+
+/***/ "./src/assets/partly-cloudy-night.png":
+/*!********************************************!*\
+  !*** ./src/assets/partly-cloudy-night.png ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"fb9e6e04257125e019cf.png\";\n\n//# sourceURL=webpack://my-app/./src/assets/partly-cloudy-night.png?");
 
 /***/ })
 
@@ -181,6 +221,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -195,6 +247,29 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
