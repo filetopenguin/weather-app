@@ -4,6 +4,13 @@ import partly_cloudy_day from './assets/partly-cloudy-day.png';
 import partly_cloudy_night from './assets/partly-cloudy-night.png';
 import cloudy from './assets/cloudy.png';
 
+const iconMap = {
+    "clear-day": clear_day,
+    "partly-cloudy-day": partly_cloudy_day,
+    "partly-cloudy-night": partly_cloudy_night,
+    "cloudy": cloudy
+};
+
 function displayCard(address,date,icon,temp){
     const cardDiv = document.getElementById('card');
 
@@ -16,8 +23,8 @@ function displayCard(address,date,icon,temp){
 
     addressTitle.innerText = address;
     tempTitle.innerText = temp + " Farenheit"  ;
-    icon.replace(/-/g, "_");
-    iconTitle.src = `assets/${icon}.png`;
+    iconTitle.src = iconMap[icon] || '';
+    iconTitle.alt = icon;
     dateTitle.textContent = date;
 
     cardDiv.appendChild(addressTitle);
